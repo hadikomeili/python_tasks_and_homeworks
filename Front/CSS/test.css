@@ -1,0 +1,26 @@
+.body_style{
+    margin: 50px auto;
+    padding: 20px;
+    border: 5px red solid;
+    background-color: cornflowerblue;
+    border-radius: 9%;
+
+}
+.card{
+    text-align: center;
+    font-size: large;
+    background-color: cornflowerblue;
+    margin: 30px 50px;
+    color: whitesmoke;
+    padding: 10px;
+}
+h1{
+    margin: 50px auto ;
+    text-align: center;
+
+    font-size: xxx-large;
+}
+input, textarea, select{
+    border-radius: 5px;
+    border: 1px ghostwhite;
+}
