@@ -1,13 +1,13 @@
+import argparse
 from cryptography.fernet import Fernet
 
 # part A #
-"""generate a secret key"""
-key = Fernet.generate_key()
-
-file_name = 'secret_key.txt'
-
-with open(file_name, 'wb') as file:
-    file.write(key)
+def generate_key():
+    """generate a secret key"""
+    key = Fernet.generate_key()
+    file_name = 'secret_key.txt'
+    with open(file_name, 'wb') as file:
+        file.write(key)
 
 # part B #
 
@@ -38,7 +38,7 @@ class Encryption:
         with open('secret_key.txt', 'wb') as f:
             f.write(self.key)
 
-
+# part C #
 class Decryption:
     """a class for decryption data and files and edit encrypted files"""
     def __init__(self, key: bytes):
@@ -78,7 +78,18 @@ class Decryption:
 # ins1.encrypt_file('test.txt')
 # ins1.secret_key()
 
-with open('secret_key.txt', 'rb') as s:
-    key = s.read()
-ins2 = Decryption(key)
-ins2.decrypt_file('test.txt')
+# with open('secret_key.txt', 'rb') as s:
+#     key = s.read()
+# ins2 = Decryption(key)
+# ins2.decrypt_file('test.txt')
+
+
+if __name__ == '__main__':
+    """a scrypt program for encrypt and decrypt utilities"""
+    parser = argparse.ArgumentParser(description='this scrypt is for encrypt and decrypt')
+    parser.add_argument('-g', '--generate', metavar='GENERATE_KEY', dest='generate', default=None, action='store',
+                        help='generate a key for encryption and save in a file')
+    # parser.add_argument('-s', '--save', metavar='SAVE_IN_FILE', dest='save', default=None, action='store',
+    #                     help='save generated key in a file')
+    parser.add_argument('-e', '--encrypt', metavar='ENCRYPT', dest='encrypt', action='store',
+                        help='encrypt ')
