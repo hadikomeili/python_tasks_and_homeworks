@@ -1,6 +1,7 @@
 import argparse
 from cryptography.fernet import Fernet
 
+
 # part A #
 def generate_key():
     """generate a secret key"""
@@ -8,14 +9,20 @@ def generate_key():
     file_name = 'secret_key.txt'
     with open(file_name, 'wb') as file:
         file.write(key)
+    return file_name
+
 
 # part B #
 
 class Encryption:
     """a class for encryption data and files"""
-    def __init__(self):
-        self.key = Fernet.generate_key()
 
+    def __init__(self, key_file_name: str):
+        with open(key_file_name, 'rb') as file:
+            key = file.read()
+            if not isinstance(key, bytes):
+                raise TypeError
+        self.key = key
 
     def encrypt_data(self, data: str):
         f = Fernet(self.key)
@@ -30,20 +37,26 @@ class Encryption:
             file_data = file.read()
         file_data_as_bytes = str.encode(file_data)
         token_result = f.encrypt(file_data_as_bytes)
-        with open(file_name, 'wb') as new_file:
+        new_file_name = 'encrypted_' + file_name
+        with open(new_file_name, 'wb') as new_file:
             new_file.write(token_result)
-        return print(f'{file_name} is encrypted now!')
+        print('file is encrypted: ')
+        return new_file_name
 
-    def secret_key(self):
-        with open('secret_key.txt', 'wb') as f:
-            f.write(self.key)
+    # def secret_key(self):
+    #     with open('secret_key.txt', 'wb') as f:
+    #         f.write(self.key)
+
 
 # part C #
 class Decryption:
     """a class for decryption data and files and edit encrypted files"""
-    def __init__(self, key: bytes):
-        if not isinstance(key, bytes):
-            raise TypeError
+
+    def __init__(self, key_file_name: str):
+        with open(key_file_name, 'rb') as file:
+            key = file.read()
+            if not isinstance(key, bytes):
+                raise TypeError
         self.key = key
 
     def decrypt_data(self, data: bytes):
@@ -52,7 +65,7 @@ class Decryption:
         f = Fernet(self.key)
         res_as_bytes = f.decrypt(data)
         res = res_as_bytes.decode()
-        print('input data decrypted!')
+        print('input data decrypted:')
         return res
 
     def decrypt_file(self, file_name: str):
@@ -62,34 +75,65 @@ class Decryption:
         f = Fernet(self.key)
         res_as_bytes = f.decrypt(data)
         res = res_as_bytes.decode()
-        with open(file_name, 'w') as new_file:
+        new_file_name = 'decrypted_' + file_name
+        with open(new_file_name, 'w') as new_file:
             new_file.write(res)
-        return print(f'{file_name} is decrypted now!')
-
-
-# f = Fernet(key)
-# token = f.encrypt(b"my deep dark secret 255")
-# print(token)
-# x = f.decrypt(token)
-# print(x)
-
-
-# ins1 = Encryption()
-# ins1.encrypt_file('test.txt')
-# ins1.secret_key()
-
-# with open('secret_key.txt', 'rb') as s:
-#     key = s.read()
-# ins2 = Decryption(key)
-# ins2.decrypt_file('test.txt')
+        print('file is decrypted: ')
+        return new_file_name
 
 
 if __name__ == '__main__':
     """a scrypt program for encrypt and decrypt utilities"""
     parser = argparse.ArgumentParser(description='this scrypt is for encrypt and decrypt')
-    parser.add_argument('-g', '--generate', metavar='GENERATE_KEY', dest='generate', default=None, action='store',
+    parser.add_argument('-g', '--generate', action='store_true', dest='generate',
                         help='generate a key for encryption and save in a file')
-    # parser.add_argument('-s', '--save', metavar='SAVE_IN_FILE', dest='save', default=None, action='store',
-    #                     help='save generated key in a file')
-    parser.add_argument('-e', '--encrypt', metavar='ENCRYPT', dest='encrypt', action='store',
-                        help='encrypt ')
+    subparser = parser.add_subparsers(dest='command')
+    encrypt = subparser.add_parser('encrypt')
+    decrypt = subparser.add_parser('decrypt')
+
+
+    encrypt.add_argument('key', type=str, help='enter your file name of key for encrypt')
+    encrypt.add_argument('-c', '--content', action='store', type=str, help='enter content for encrypt')
+    encrypt.add_argument('-f', '--file', action='store',type=str, help='enter file name for encrypt')
+
+    decrypt.add_argument('key', type=str, help='enter your file name of key for decrypt')
+    decrypt.add_argument('-c', '--content', action='store', type=bytes, help='enter content for decrypt')
+    decrypt.add_argument('-f', '--file', action='store', type=str, help='enter file name for decrypt')
+
+    args = parser.parse_args()
+
+    if args.generate:
+        key_file = generate_key()
+        print('secret key generated: ')
+        print(key_file)
+
+    if args.command == 'encrypt':
+        key_file_path = args.key
+        enc1 = Encryption(key_file_path)
+        if args.content:
+            data_content = args.content
+            res_enc = enc1.encrypt_data(data_content)
+            print(res_enc)
+        if args.file:
+            file_path = args.file
+            file_enc = enc1.encrypt_file(file_path)
+            print(file_enc)
+
+    if args.command == 'decrypt':
+        key_file_path = args.key
+        dec1 = Decryption(key_file_path)
+        if args.content:
+            data_content = args.content
+            res_dec = dec1.decrypt_data(data_content)
+            print(res_dec)
+        if args.file:
+            file_path = args.file
+            file_dec = dec1.decrypt_file(file_path)
+            print(file_dec)
+
+
+
+
+
+
+
