@@ -1,5 +1,6 @@
 import argparse
 from cryptography.fernet import Fernet
+import os
 
 
 # part A #
@@ -43,9 +44,26 @@ class Encryption:
         print('file is encrypted: ')
         return new_file_name
 
-    # def secret_key(self):
-    #     with open('secret_key.txt', 'wb') as f:
-    #         f.write(self.key)
+def decorator(key: str, *args, **kwargs):
+    """a decorative for encrypt output of a function"""
+    def inner_func(func):
+        res = func(*args, **kwargs)
+        def encryption():
+            f = Fernet(key)
+            res_as_bytes = str.encode(res)
+            token_res = f.encrypt(res_as_bytes)
+            return token_res
+        return encryption
+
+    return inner_func
+
+@decorator('cPpSI_hyjBlvqilhpjwWSQuQIvT0r6SRWBSNwh-Bijc=')
+def hello_world():
+    return 'hello world'
+
+x = hello_world()
+print(x)
+
 
 
 # part C #
@@ -59,7 +77,8 @@ class Decryption:
                 raise TypeError
         self.key = key
 
-    def decrypt_data(self, data: bytes):
+    def decrypt_data(self, data: str):
+        data = bytes(data, 'utf-8')
         if not isinstance(data, bytes):
             raise TypeError
         f = Fernet(self.key)
@@ -82,6 +101,9 @@ class Decryption:
         return new_file_name
 
 
+
+
+
 if __name__ == '__main__':
     """a scrypt program for encrypt and decrypt utilities"""
     parser = argparse.ArgumentParser(description='this scrypt is for encrypt and decrypt')
@@ -97,7 +119,7 @@ if __name__ == '__main__':
     encrypt.add_argument('-f', '--file', action='store',type=str, help='enter file name for encrypt')
 
     decrypt.add_argument('key', type=str, help='enter your file name of key for decrypt')
-    decrypt.add_argument('-c', '--content', action='store', type=bytes, help='enter content for decrypt')
+    decrypt.add_argument('-c', '--content', action='store', type=str, help='enter content for decrypt')
     decrypt.add_argument('-f', '--file', action='store', type=str, help='enter file name for decrypt')
 
     args = parser.parse_args()
@@ -108,7 +130,9 @@ if __name__ == '__main__':
         print(key_file)
 
     if args.command == 'encrypt':
+
         key_file_path = args.key
+        assert os.path.exists(key_file_path), 'the key file not exist!!!'
         enc1 = Encryption(key_file_path)
         if args.content:
             data_content = args.content
@@ -116,11 +140,13 @@ if __name__ == '__main__':
             print(res_enc)
         if args.file:
             file_path = args.file
+            assert os.path.exists(file_path), 'the file not exist!!!'
             file_enc = enc1.encrypt_file(file_path)
             print(file_enc)
 
     if args.command == 'decrypt':
         key_file_path = args.key
+        assert os.path.exists(key_file_path), 'the key file not exist!!!'
         dec1 = Decryption(key_file_path)
         if args.content:
             data_content = args.content
@@ -128,6 +154,7 @@ if __name__ == '__main__':
             print(res_dec)
         if args.file:
             file_path = args.file
+            assert os.path.exists(file_path), 'the file not exist!!!'
             file_dec = dec1.decrypt_file(file_path)
             print(file_dec)
 
