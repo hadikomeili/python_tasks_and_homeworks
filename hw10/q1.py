@@ -39,6 +39,6 @@ def phone_validation(phone: str):
         return False
 
 
-phone1 = input('enter phone number: ')
-pv = phone_validation(phone1)
-print(pv)
+# phone1 = input('enter phone number: ')
+# pv = phone_validation(phone1)
+# print(pv)
