@@ -56,7 +56,7 @@ if __name__ == '__main__':
     u1 = Register('komeil', 'komeili', '09159600000', '123', 'komeili.hadi@gmail.com')
     x = user_dictionary(u1)
     users.append(x)
-    
+
     res = save_in_json(users)
     print('users saved in:', res)
 
