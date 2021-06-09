@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+}
+
+.left {
+    width: 25%;
+    height: 80vh;
+    background-color: cornflowerblue;
+    padding-left: 3%;
+    color: white;
+}
+
+.right {
+    width: 75%;
+    height: 80vh;
+    background-color: #b8daff;
+    padding: 15% 10% 5%;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+h1 {
+    font-size: xx-large;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+h2 {
+    font-size: x-large;
+    font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+}
+
+p {
+    font-size: large;
+
+}
+
+img {
+    width: 90%;
+    height: auto;
+    align-items: center;
+}
+
+span {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    float: right;
+}
+
+.btn:hover {
+    background-color: RoyalBlue;
+}
