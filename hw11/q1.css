@@ -19,7 +19,7 @@
     width: 75%;
     height: 90vh;
     background-color: #b8daff;
-    padding: 15% 10% 5%;
+    padding: 10% 10% 5%;
 
 }
 
@@ -41,8 +41,7 @@ h2 {
 }
 
 p {
-    font-size: 22px;
-
+    font-size: 20px;
 }
 
 img {
@@ -86,3 +85,4 @@ h3 {
     font-family: "Segoe UI", Arial, sans-serif;
     font-size: 18px;
 }
+
