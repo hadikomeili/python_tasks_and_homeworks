@@ -9,7 +9,7 @@
 
 .left {
     width: 25%;
-    height: 80vh;
+    height: 90vh;
     background-color: cornflowerblue;
     padding-left: 3%;
     color: white;
@@ -17,7 +17,7 @@
 
 .right {
     width: 75%;
-    height: 80vh;
+    height: 90vh;
     background-color: #b8daff;
     padding: 15% 10% 5%;
 
@@ -36,12 +36,12 @@ h1 {
 }
 
 h2 {
-    font-size: x-large;
+    font-size: xx-large;
     font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
 }
 
 p {
-    font-size: large;
+    font-size: 22px;
 
 }
 
@@ -68,5 +68,21 @@ span {
 }
 
 .btn:hover {
-    background-color: RoyalBlue;
+    opacity: 0.7;
+}
+
+a {
+    padding-left: 5px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    color: white;
+}
+
+h3 {
+    padding-top: 10px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 18px;
 }
