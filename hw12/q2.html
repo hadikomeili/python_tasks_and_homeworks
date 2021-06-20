@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Me</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+    <link href="q2.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+<div class="container-fluid m-auto p-lg-5 bgcolor">
+    <div class="row">
+
+
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <img src="pic2.jpg" alt="picture of hadi komeili" class="img-fluid">
+            <a href="#">Hadi Komeili</a>
+            <a href="#">Python Programmer</a>
+            <a href="https://facebook.com" class="fa fa-facebook"></a>
+            <a href="https://twitter.com" class="fa fa-twitter"></a>
+            <a href="https://google.com" class="fa fa-google"></a>
+            <a href="https://telegram.com" class="fa fa-telegram"></a>
+            <a href="#">ABOUT ME</a>
+            <a href="#">EXPERIENCE</a>
+            <a href="#">EDUCATION</a>
+        </div>
+        <div id="main" class="container-fluid p-5">
+            <button class="openbtn" onclick="openNav()">☰ Menu</button>
+            <div class="row pt-lg-5 float-right">
+                <button class="btn"><i class="fa fa-download" id="download_icon"></i>Download Resume</button>
+            </div>
+                <div class="row pt-lg-4">
+                    <h2>About Me</h2>
+                </div>
+
+                <div class="row pt-5 pb-5">
+                    <p>Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text. Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text.</p>
+
+
+
+
+
+                </div>
+                <div class="row p2">
+                    <p><span>Birthday:</span> March 22, 1990</p>
+                </div>
+                <div class="row p2">
+                    <p><span>Location:</span> Birjand, Iran</p>
+                </div>
+                <div class="row p2">
+                    <p><span>Email:</span> komeili.hadi@gmail.com</p>
+                </div>
+                <div class="row p2">
+                    <p><span>Phone:</span> +98 915 963 86 25</p>
+                </div>
+                <div class="row pt-lg-4">
+                    <div class="col-sm-5">
+                        <pre><strong>Photoshop</strong>                                  <span style="color: grey">90%</span></pre>
+
+                    </div>
+                    <div class="col-sm-5">
+                        <pre><strong>Illustrator</strong>                                 <span style="color: grey">80%</span></pre>
+
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+</div>
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+</body>
+</html>
