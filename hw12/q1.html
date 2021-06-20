@@ -7,33 +7,71 @@
     <link href="q1.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
+<div id="page">
 
 
-    <div class="column left">
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <img src="pic2.jpg" alt="picture of hadi komeili">
-        <h1>Hadi Komeili</h1>
-        <p>Python Programer</p><br>
+        <a href="#" style="font-size: xx-large">Hadi Komeili</a>
+        <a href="#">Python Programmer</a>
         <a href="https://facebook.com" class="fa fa-facebook"></a>
         <a href="https://twitter.com" class="fa fa-twitter"></a>
         <a href="https://google.com" class="fa fa-google"></a>
         <a href="https://telegram.com" class="fa fa-telegram"></a>
-        <h3>ABOUT ME</h3>
-        <h3>EXPERIENCE</h3>
-        <h3>EDUCATION</h3>
+        <a href="#">ABOUT ME</a>
+        <a href="#">EXPERIENCE</a>
+        <a href="#">EDUCATION</a>
     </div>
-    <div class="column right">
-        <button class="btn"><i class="fa fa-download" id="download_icon"></i>Download Resume</button>
-        <h2>About Me</h2>
-        <p>Hello. My name is Hadi. ...<br> ... <br> ...</p>
-        <br>
-        <p><span>Birthday:</span> March 22, 1990</p>
-        <p><span>Location:</span> Birjand, Iran</p>
-        <p><span>Email:</span> komeili.hadi@gmail.com</p>
-        <p><span>Phone:</span> +98 915 963 86 25</p><br><br>
-        <pre><strong>Photoshop</strong>                                  <span style="color: grey">90%</span>     <strong>Illustrator</strong>                                 <span style="color: grey">80%</span></pre>
+    <div id="main">
+        <button class="openbtn" onclick="openNav()">☰ Menu</button>
+        <div style="padding-top: 2%" >
+            <button class="btn"><i class="fa fa-download" id="download_icon"></i>Download Resume</button>
+        </div>
+            <div style="padding-top: 3%; padding-left: 20px">
+                <h2>About Me</h2>
+            </div>
+
+            <div style="padding-bottom: 4%">
+                <p>Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text. Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text.Hello. My name is Hadi. this is a test text.</p>
+
+
+            </div>
+            <div>
+                <p><span>Birthday:</span> March 22, 1990</p>
+            </div>
+            <div>
+                <p><span>Location:</span> Birjand, Iran</p>
+            </div>
+            <div>
+                <p><span>Email:</span> komeili.hadi@gmail.com</p>
+            </div>
+            <div style="padding-bottom: 2%">
+                <p><span>Phone:</span> +98 915 963 86 25</p>
+            </div>
+            <div>
+                <div style="position: relative; padding-bottom: 80px">
+                    <pre style="position: relative; float: right"><strong>Photoshop</strong>                                       <span style="color: grey">90%</span></pre>
+                    <pre style="position: relative; float: end"><strong>Illustrator</strong>                                      <span style="color: grey">80%</span></pre>
+                </div>
+
+            </div>
+
 
     </div>
 
+</div>
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
 
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
 </body>
 </html>
