@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row h-75">
+        <div class="col-4 bg-info shadow text-center panel" style="min-height: 700px">
+            <ul class="list-group" id="names_list">
+
+            </ul>
+        </div>
+        <div class="col-8 bg-light shadow text-center info" id="users-container" id="info" style="min-height: 700px">
+
+
+        </div>
+    </div>
+</div>
+<script>
+    $.ajax({
+        url: "http://ma-web.ir/maktab52/users.json",
+        type: "GET",
+        success: function (response, status, xhr) {
+            const txt = xhr.responseText;
+            const users = JSON.parse(txt);
+            for (const user of users) {
+                $('#names_list').append(`<a class="list-group-user">${user.firstname}</a>`);
+                $('a').click(function () {
+                    $('#users-container').empty()
+                    var html_to_append = '';
+                    html_to_append +=
+                        '<p>' +
+                        user.firstname + " " + user.lastname +
+                        '</p><p>' +
+                        user.phone +
+                        '</p><p>' +
+                        user.email +
+                        '</p><p>' +
+                        user.id +
+                        '</p>';
+                    $("#users-container").html(html_to_append);
+
+                    ;
+                })
+            }
+
+
+            ;
+        }
+
+    })
+
+</script>
+
+</body>
+</html>
