@@ -14,7 +14,7 @@
 
             </ul>
         </div>
-        <div class="col-8 bg-light shadow text-center info" style="min-height: 700px">
+        <div class="col-8 bg-light shadow text-center " id="info" style="min-height: 700px">
 
         </div>
     </div>
@@ -27,7 +27,7 @@
             const users = JSON.parse(txt);
 
             for (const user of users) {
-                $('#names_list').append(`<a class="list-group-item">${user.firstname}</a>`);
+                $('#names_list').append(`<button type="button" onclick="document.getElementById('info').innerHTML = '${user.firstname} ${user.lastname} <br>${user.id} <br>${user.phone} <br>${user.email} <br>${user.modify_timestamp}' " >${user.firstname}</button>`);
             }
             ;
         }
