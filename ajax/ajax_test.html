@@ -9,12 +9,12 @@
 <body>
 <div class="container-fluid">
     <div class="row h-75">
-        <div class="col-4 bg-info shadow text-center panel" style="min-height: 700px">
+        <div class="col-4 bg-dark text-center panel" style="min-height: 90vh">
             <ul class="list-group" id="names_list">
 
             </ul>
         </div>
-        <div class="col-8 bg-light shadow text-center " id="info" style="min-height: 700px">
+        <div class="col-8 text-center mt-5 p-3" id="info" style="min-height: inherit; font-size: 25px">
 
         </div>
     </div>
@@ -27,7 +27,7 @@
             const users = JSON.parse(txt);
 
             for (const user of users) {
-                $('#names_list').append(`<button type="button" onclick="document.getElementById('info').innerHTML = '${user.firstname} ${user.lastname} <br>${user.id} <br>${user.phone} <br>${user.email} <br>${user.modify_timestamp}' " >${user.firstname}</button>`);
+                $('#names_list').append(`<button type="button" class="btn-outline-secondary m-1 " onclick="document.getElementById('info').innerHTML = '${user.firstname} ${user.lastname} <br>${user.id} <br>${user.phone} <br>${user.email} <br>${user.modify_timestamp}' " >${user.firstname}</button>`);
             }
             ;
         }
