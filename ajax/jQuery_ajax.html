@@ -14,7 +14,7 @@
 
             </ul>
         </div>
-        <div class="col-8 bg-light shadow text-center info" id="users-container" id="info" style="min-height: 700px">
+        <div class="col-8 bg-light shadow text-center info" id="info" style="min-height: 700px">
 
 
         </div>
@@ -28,31 +28,12 @@
             const txt = xhr.responseText;
             const users = JSON.parse(txt);
             for (const user of users) {
-                $('#names_list').append(`<a class="list-group-user">${user.firstname}</a>`);
-                $('a').click(function () {
-                    $('#users-container').empty()
-                    var html_to_append = '';
-                    html_to_append +=
-                        '<p>' +
-                        user.firstname + " " + user.lastname +
-                        '</p><p>' +
-                        user.phone +
-                        '</p><p>' +
-                        user.email +
-                        '</p><p>' +
-                        user.id +
-                        '</p>';
-                    $("#users-container").html(html_to_append);
-
-                    ;
-                })
-            }
-
-
+                $('#names_list').append(`<button type="button" onclick="document.getElementById('info').innerHTML = '${user.firstname} ${user.lastname} <br>${user.id} <br>${user.phone} <br>${user.email} <br>${user.modify_timestamp}' " >${user.firstname}</button>`);
+                }
             ;
         }
-
     })
+
 
 </script>
 
