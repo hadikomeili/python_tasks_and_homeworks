@@ -20,6 +20,9 @@ urlpatterns = [
     path('profile/', CashierProfile.as_view(), name='cashier_profile'),
     path('login_user/', MyLoginView.as_view(), name='login_user'),
     path('logout_user/', MyLogoutView.as_view(), name='logout_user'),
+    path('signup_user', sign_up, name='signup_user'),
+    path('', home, name='home')
+
 
 
 ]

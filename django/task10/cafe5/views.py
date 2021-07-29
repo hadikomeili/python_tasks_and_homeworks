@@ -182,6 +182,7 @@ class CashierProfile(PermissionRequiredMixin, View):
 
 #-----------------------------------------------------------------
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.forms import UserCreationForm
 
 
 class MyLoginView(LoginView):
@@ -190,3 +191,22 @@ class MyLoginView(LoginView):
 
 class MyLogoutView(LogoutView):
     pass
+
+
+def sign_up(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+            return redirect('cafe5:home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'signup.html', {'form': form})
+
+
+def home(request):
+    return render(request, 'home.html')
