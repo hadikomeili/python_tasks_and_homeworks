@@ -16,7 +16,7 @@ urlpatterns = [
     path('addneworder/', AddNewOrder.as_view(), name='add_new_order_generic_view'),
     path('menu_item/', menu_item_view_form, name='menu_item_by_dj_form'),
     path('create_menu_item', CreateMenuItemFormView.as_view(), name='menu_item_by_dj_model_form_view'),
-    path('login/', login_cashier, name='login_cashier'),
-    path('cashier_profile/', ChashierProfile.as_view(), name='cashier_profile'),
+    path('login/', LoginView.as_view(), name='login_cashier'),
+    path('profile/', CashierProfile.as_view(), name='cashier_profile'),
 
 ]

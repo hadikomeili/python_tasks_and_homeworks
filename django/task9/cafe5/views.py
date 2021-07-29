@@ -1,4 +1,3 @@
-
 from django.core.files.storage import default_storage
 from django.shortcuts import render, get_list_or_404, reverse, redirect
 from django.urls import reverse_lazy
@@ -150,11 +149,11 @@ class CreateMenuItemFormView(generic.FormView):
 from django.contrib.auth import authenticate, login
 
 
-def login_cashier(request):
-    if request.method == 'POST':
+class LoginView(View):
 
-        username = request.POST["username"]
-        password = request.POST["password"]
+    def post(self, request, *args, **kwargs):
+        username = request.POST['username']
+        password = request.POST['password']
         print(username, password)
         user = authenticate(request, username=username, password=password)
         print(user)
@@ -163,7 +162,8 @@ def login_cashier(request):
             return redirect('cafe5:cashier_profile')
         else:
             return render(request, 'login.html', {'error': 'invalid username or password'})
-    else:
+
+    def get(self, request, *args, **kwargs):
         return render(request, 'login.html')
 
 
@@ -172,9 +172,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
-class ChashierProfile(PermissionRequiredMixin, View):
-
+class CashierProfile(PermissionRequiredMixin, View):
     permission_required = 'auth.see_profile'
 
     def get(self, request, *args, **kwargs):
-        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+        return render(request, 'cashier_profile.html')
+        # return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))

@@ -6,7 +6,7 @@
 </head>
 <body>
 <p>{{ error }}</p>
-<form method="post">
+<form method="post" action="{% url 'cafe5:login_cashier' %}">
     {% csrf_token %}
 
 
