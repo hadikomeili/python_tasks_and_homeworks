@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>profile</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-3">
+<button class="btn btn-danger " ><a href="{% url 'cafe5:logout_user' %}">log out</a></button>
+<table class="table table-bordered text-center">
+
+
+
+    <tr>
+        <th>first name</th>
+        <th>last name</th>
+        <th>username</th>
+        <th>phone</th>
+        <th>email</th>
+        <th>address</th>
+        <th>national code</th>
+
+    </tr>
+
+    <tr>
+        <td>{{ user.first_name}}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.phone_number }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.national_code }}</td>
+
+
+    </tr>
+
+
+    </table>
+</body>
+</html>
