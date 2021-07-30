@@ -1,0 +1,33 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Cafe5{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Cafe5 Test</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+{% block extrahead %}
+    <style>
+    @font-face {
+        font-family: "Comic Sans MS"
+    }
+    body {
+        font-family: "Comic Sans MS"
+    }
+    :root {
+        --primary: #f9332c;
+        --secondary: #f55d0a;
+        --accent: #7a0c1a;
+        --body-bg: #eff5db;
+        --link-fg: #4003a4;
+        --header-link-color: #fcfcfc;
+        --breadcrumbs-link-fg: #fcfcfc;
+        --hairline-color: #eff8d0;
+        --darkened-bg: #ece8be;
+
+
+    }
+
+    </style>
+{% endblock %}
